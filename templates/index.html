@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='/img/favicon.png') }}">
+
+        <!--=============== REMIX ICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href={{ url_for('static', filename='/css/styles.css') }}>
+        
+        <script src={{ url_for('static', filename='/js/jquery_3.6.0.min.js') }}></script>
+
+        <title>Starla 4</title>
+    </head>
+    <body>
+        <!--==================== HEADER ====================-->
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav__logo">
+                    <i class="ri-leaf-line nav__logo-icon"></i> PotatoCorn Detect
+                </a>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link active-link">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#appkentang" class="nav__link">Application</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#kentang" class="nav__link">Leaf Disease</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#about" class="nav__link">Tips</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#faqs" class="nav__link">FAQs</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#contact" class="nav__link">Team</a>
+                        </li>
+                    </ul>
+
+                    <div class="nav__close" id="nav-close">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </div>
+
+                <div class="nav__btns">
+                    <!-- Theme change button -->
+                    <i class="ri-moon-line change-theme" id="theme-button"></i>
+
+                    <div class="nav__toggle" id="nav-toggle">
+                        <i class="ri-menu-line"></i>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home" id="home">
+                <div class="home__container container grid">
+                    <img src={{ url_for('static', filename='/img/coba3.png') }} alt="" class="home__img">
+
+                    <div class="home__data">
+                        <h1 class="home__title" style="font-size: 50px;">
+                            Deteksi Penyakit Daun Tanaman Kentang & Jagung
+                        </h1>
+                        <p class="home__description" style="font-size: 15px; text-align: justify;">
+                            Deteksi penyakit daun tanaman kentang dan jagung
+                            adalah proses mengidentifikasi penyakit atau kerusakan pada daun tanaman 
+                            yang dapat membantu petani mengambil tindakan yang tepat untuk 
+                            mencegah penyebaran penyakit dan merawat tanaman dengan lebih efektif.
+                        </p>
+                        <a href="#appkentang" class="button button--flex">
+                            Kentang <i class="ri-arrow-right-down-line button__icon"></i>
+                        </a>
+
+
+                        <a href="#appjagung" class="button button--flex">
+                            Jagung <i class="ri-arrow-right-down-line button__icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="home__social">
+                        <span class="home__social-follow">Follow Us</span>
+
+                        <div class="home__social-links">
+                            <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--==================== APLIKASI ====================-->
+
+            <section class="steps section container" id="appkentang">
+                <div class="steps__bg">
+                    <h2 class="section__title-center steps__title">
+                        Deteksi Penyakit <br> Daun Tanaman Kentang
+                    </h2>
+                
+                        <div class="steps__card">
+                        <div class="row">
+                            <div class="col" style="margin-left: 80px;">
+                                    <h1 class="steps__card-title">Let's start detection!!</h1>
+                                <div class="line"></div>
+                                    <img src={{ url_for('static', filename='/img/8.png') }} alt="" width="200">
+                                    <p class="steps__card-description" style="font-size: medium;">Silahkan Masukkan Gambar</p>
+                                                               
+                            </div>
+                            <div class="col" style="margin-right: 80px;">
+                                    <div class="hasilprediksi">
+                                    <br>
+                                    <!-- Bagian Halaman untuk Hasil Prediksi -->
+                                        <div class="steps__card-title" id="hasil_prediksi" align="center">
+                                    <!-- Hasil Prediksi akan ditampilkan di sini-->
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="margin-left: 80px;">
+                                <p><input type="file" id="input_gambar" name="file"></p> 
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="margin-left: 130px;">
+                                <button type="submit" id="prediksi_submit" class="button button--flex">Prediksi</button>
+                            </div>
+                            <div class="col" style="margin-right: 60px;">
+                                <a href="#kentang" class="button button--flex">
+                                    Pelajari lebih lanjut <i class="ri-arrow-right-down-line button__icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </section>
+
+            <section class="steps section container" id="appjagung">
+                <div class="steps__bg">
+                    <h2 class="section__title-center steps__title">
+                        Deteksi Penyakit <br> Daun Tanaman Jagung
+                    </h2>
+                
+                        <div class="steps__card">
+                        <div class="row">
+                            <div class="col" style="margin-left: 80px;">
+                                    <h1 class="steps__card-title">Let's start detection!!</h1>
+                                <div class="line"></div>
+                                    <img src={{ url_for('static', filename='/img/12.png') }} alt="" width="200">
+                                    <p class="steps__card-description" style="font-size: medium;">Silahkan Masukkan Gambar</p>
+                                                               
+                            </div>
+                            <div class="col" style="margin-right: 80px;">
+                                    <div class="hasilprediksi">
+                                    <br>
+                                    <!-- Bagian Halaman untuk Hasil Prediksi -->
+                                        <div class="steps__card-title" id="hasil_prediksi_jagung" align="center">
+                                    <!-- Hasil Prediksi akan ditampilkan di sini-->
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="margin-left: 80px;">
+                                <p><input type="file" id="input_gambar_jagung" name="file"></p> 
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="margin-left: 130px;">
+                                <button type="submit" id="prediksi_submit_jagung" class="button button--flex">Prediksi</button>
+                            </div>
+                            <div class="col" style="margin-right: 60px;">
+                                <a href="#jagung" class="button button--flex">
+                                    Pelajari lebih lanjut <i class="ri-arrow-right-down-line button__icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </section>
+
+            <!--==================== LEAF DISEASE ====================-->
+            <section class="product section container" id="kentang">
+                <h2 class="section__title-center">
+                    Penyakit Daun Pada <br> Tanaman Kentang
+                </h2>
+
+                <p class="product__description">
+                    Penyakit daun pada tanaman kentang merujuk pada berbagai kondisi dan infeksi yang dapat mempengaruhi 
+                    kesehatan dan penampilan daun. Beberapa penyakit daun umum pada tanaman kentang meliputi:
+                </p>
+
+                <div class="product__container grid">
+                    <article class="product__card">
+                        <div class="product__circle"></div>
+
+                        <img src={{ url_for('static', filename='/img/7.png') }} alt="" class="product__img">
+
+                        <h3 class="product__title">Potato Late Blight</h3>
+                        <span style="font-size: var(--small-font-size)">Penyakit Leaf Blight pada daun kentang disebabkan oleh jamur patogen Phytophthora infestans ...</span>
+
+                        <br>
+                    
+                        <button2 class="button2--flex product__button2">
+                            <a href="https://plantix.net/id/library/plant-diseases/100040/potato-late-blight" class="button2 button2--flex">
+                                Read More <i class="ri-arrow-right-down-line button2__icon"></i>
+                            </a>
+                        </button2>
+                    </article>
+
+                    <article class="product__card">
+                        <div class="product__circle"></div>
+
+                        <img src={{ url_for('static', filename='/img/8.png') }} alt="" class="product__img">
+
+                        <h3 class="product__title">Potato Healty</h3>
+                        <span style="font-size: var(--small-font-size)">Daun kentang yang sehat mengacu pada kondisi daun yang normal dan bebas dari penyakit atau kerusakan ...</span>
+
+                        <br>
+
+                        <button2 class="button2--flex product__button2">
+                            <a href="https://idnmedis.com/daun-kentang" class="button2 button2--flex">
+                                Read More <i class="ri-arrow-right-down-line button2__icon"></i>
+                            </a>
+                        </button2>
+                    </article>
+
+                    <article class="product__card">
+                        <div class="product__circle"></div>
+
+                        <img src={{ url_for('static', filename='/img/9.png') }} alt="" class="product__img">
+
+                        <h3 class="product__title">Potato Early Blight</h3>
+                        <span style="font-size: var(--small-font-size)">Penyakit Early Blight pada daun kentang disebabkan oleh jamur patogen Alternaria solani ...</span>
+
+                        <br>
+
+                        <button2 class="button2--flex product__button2">
+                            <a href="https://plantix.net/id/library/crops/potato" class="button2 button2--flex">
+                                Read More <i class="ri-arrow-right-down-line button2__icon"></i>
+                            </a>
+                        </button2>
+                    </article>
+                </div>
+            </section>
+
+            <section class="product section container" id="jagung">
+                <h2 class="section__title-center">
+                    Penyakit Daun Pada <br> Tanaman Jagung
+                </h2>
+
+                <p class="product__description">
+                    Penyakit daun pada tanaman jagung merujuk pada berbagai kondisi dan infeksi yang dapat mempengaruhi 
+                    kesehatan dan penampilan daun. Beberapa penyakit daun umum pada tanaman jagung meliputi:
+                </p>
+
+                <div class="product__container grid">
+                    <article class="product__card">
+                        <div class="product__circle"></div>
+
+                        <img src={{ url_for('static', filename='/img/10.png') }} alt="" class="product__img" style="align-items: center;">
+
+                        <h3 class="product__title">Corn Common Rust</h3>
+                        <span style="font-size: var(--small-font-size)">Luka berawal dari flek pada daun yang berkembang menjadi bercak kecil berwarna ...</span>
+
+                        <br>
+
+                        <button2 class="button2--flex product__button2">
+                            <a href="https://plantix.net/id/library/plant-diseases/100082/common-rust-of-maize" class="button2 button2--flex">
+                                Read More <i class="ri-arrow-right-down-line button2__icon"></i>
+                            </a>
+                        </button2>
+                    </article>
+
+                    <article class="product__card">
+                        <div class="product__circle"></div>
+
+                        <img src={{ url_for('static', filename='/img/11.png') }} alt="" class="product__img">
+
+                        <h3 class="product__title">Corn Grey Leaf Spot</h3>
+                        <span style="font-size: var(--small-font-size)">Luka kecil yang dikelilingi oleh lingkaran cahaya kuning. Luka dapat menyatu ...</span>
+                        
+                        <br>
+
+                        <button2 class="button2--flex product__button2">
+                            <a href="https://plantix.net/id/library/plant-diseases/100107/grey-leaf-spot-of-maize" class="button2 button2--flex">
+                                Read More <i class="ri-arrow-right-down-line button2__icon"></i>
+                            </a>
+                        </button2>
+                    </article>
+
+                    <article class="product__card">
+                        <div class="product__circle"></div>
+
+                        <img src={{ url_for('static', filename='/img/12.png') }} alt="" class="product__img" style="align-items: right;">
+
+                        <h3 class="product__title">Corn Healty</h3>
+                        <span style="font-size: var(--small-font-size)">Warna hijau yang cerah, bentuk daun yang sempurna, tidak ada bercak atau lesi ...</span>
+
+                        <br>
+
+                        <button2 class="button2--flex product__button2">
+                            <a href="https://id.m.wikipedia.org/wiki/Jagung" class="button2 button2--flex">
+                                Read More <i class="ri-arrow-right-down-line button2__icon"></i>
+                            </a>
+                        </button2>
+                    </article>
+                    <br>
+                    <article class="product__card">
+                        <div class="product__circle"></div>
+
+                        <img src={{ url_for('static', filename='/img/13.png') }} alt="" class="product__img">
+
+                        <h3 class="product__title">Corn Northern Leaf Blight</h3>
+                        <span style="font-size: var(--small-font-size)">Lesi cokelat berbentuk berlian hingga memanjang dengan tepi kecokelatan pada daun ...</span>
+
+                        <br>
+
+                        <button2 class="button2--flex product__button2">
+                            <a href="https://plantix.net/id/library/plant-diseases/100161/southern-leaf-blight-of-maize" class="button2 button2--flex">
+                                Read More <i class="ri-arrow-right-down-line button2__icon"></i>
+                            </a>
+                        </button2>
+                    </article>
+                </div>
+            </section>
+
+            <!--==================== TIPS ====================-->
+            <section class="about section container" id="about">
+                        <h2 class="section__title-center">
+                            Bagaimana Menjaga Kesehatan <br> Tanaman Kentang dan Jagung? 
+                        </h2>
+
+                        <p class="product__description">
+                            Menjaga kesehatan tanaman kentang dan jagung sangatlah penting untuk mencapai 
+                            hasil panen yang optimal dan menjaga keberlanjutan produksi pertanian.
+                        </p>
+                        <br>
+                <div class="about__container grid">
+                    
+                    <img src={{ url_for('static', filename='/img/Potato1.png') }} alt="" class="about__img">
+                    
+                    <img src={{ url_for('static', filename='/img/Corn1.png') }} alt="" class="about__img">
+                    
+                    <div class="about__data">
+                        <h2 class="section__title about__title" style="font-size: var(--h3-font-size)">
+                            Tips-Tips Untuk Menjaga Kesehatan Tanaman Kentang
+                        </h2>
+
+                        <div class="about__details" style="font-size: var(--small-font-size); text-align: justify;">
+                            <p class="about__details-description">
+                                <i class="ri-checkbox-fill about__details-icon"></i>
+                                Jika risiko serangan penyakit tinggi, pertimbangkan penggunaan 
+                                fungisida sesuai dengan petunjuk dan dosis yang tepat.
+                            </p>
+                            <p class="about__details-description">
+                                <i class="ri-checkbox-fill about__details-icon"></i>
+                                Lakukan pemangkasan secara teratur untuk meningkatkan sirkulasi udara 
+                                dan mengurangi kelembaban yang dapat menyebabkan perkembangan penyakit.
+                            </p>
+                            <p class="about__details-description">
+                                <i class="ri-checkbox-fill about__details-icon"></i>
+                                Simpan umbi kentang dalam kondisi yang optimal setelah panen untuk mencegah 
+                                infeksi penyakit dan mempertahankan kualitasnya.
+                            </p>
+                            <p class="about__details-description">
+                                <i class="ri-checkbox-fill about__details-icon"></i>
+                                Pertahankan kebersihan tanah dengan pengendalian gulma dan pemupukan yang tepat 
+                                untuk memastikan tanaman kentang mendapatkan nutrisi yang cukup.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about__data">
+                        <h2 class="section__title about__title" style="font-size: var(--h3-font-size)">
+                            Tips-Tips Untuk Menjaga Kesehatan Tanaman Jagung
+                        </h2>
+
+                        <div class="about__details" style="font-size: var(--small-font-size); text-align: justify;">
+                            <p class="about__details-description">
+                                <i class="ri-checkbox-fill about__details-icon"></i>
+                                Pilih varietas jagung yang tahan terhadap penyakit daun 
+                                seperti grey leaf spot, common rust, dan northern corn leaf blight.
+                            </p>
+                            <p class="about__details-description">
+                                <i class="ri-checkbox-fill about__details-icon"></i>
+                                Lakukan rotasi tanaman dengan tanaman non-serealia untuk mengurangi 
+                                risiko penyebaran patogen penyakit.
+                            </p>
+                            <p class="about__details-description">
+                                <i class="ri-checkbox-fill about__details-icon"></i>
+                                Hapus dan buang sisa-sisa tanaman yang terinfeksi, termasuk 
+                                daun-daun yang jatuh, untuk mengurangi sumber penularan penyakit.
+                            </p>
+                            <p class="about__details-description">
+                                <i class="ri-checkbox-fill about__details-icon"></i>
+                                Hindari irigasi berlebihan dan jaga kelembaban tanah yang seimbang 
+                                untuk mengurangi kondisi yang menguntungkan bagi patogen.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!--==================== QUESTIONS ====================-->
+            <section class="questions section" id="faqs">
+                <h2 class="section__title-center questions__title container">
+                    Beberapa pertanyaan umum <br> sering ditanyakan
+                </h2>
+
+                <div class="questions__container container grid">
+                    <div class="questions__group">
+                        <div class="questions__item">
+                            <header class="questions__header">
+                                <i class="ri-add-line questions__icon"></i>
+                                <h3 class="questions__item-title">
+                                    Apa yang menyebabkan daun jagung terkena penyakit grey leaf spot?
+                                </h3>
+                            </header>
+
+                            <div class="questions__content">
+                                <p class="questions__description">
+                                    Grey leaf spot pada jagung disebabkan oleh jamur yang disebut Cercospora zeae-maydis. 
+                                    Penyakit ini umum terjadi di daerah dengan cuaca lembap dan panas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="questions__item">
+                            <header class="questions__header">
+                                <i class="ri-add-line questions__icon"></i>
+                                <h3 class="questions__item-title">
+                                    Bagaimana cara mengidentifikasi gejala penyakit common rust pada tanaman jagung?
+                                </h3>
+                            </header>
+
+                            <div class="questions__content">
+                                <p class="questions__description">
+                                    Gejala penyakit common rust pada jagung meliputi adanya bintik-bintik berwarna 
+                                    oranye atau kuning pada daun yang kemudian berkembang menjadi pustula berwarna 
+                                    cokelat dengan tekstur seperti kerak.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="questions__item">
+                            <header class="questions__header">
+                                <i class="ri-add-line questions__icon"></i>
+                                <h3 class="questions__item-title">
+                                    Apa yang dapat dilakukan untuk mengendalikan penyakit northern corn leaf blight pada tanaman jagung?
+                                </h3>
+                            </header>
+
+                            <div class="questions__content">
+                                <p class="questions__description">
+                                    Mengendalikan penyakit northern corn leaf blight melibatkan praktik budidaya yang 
+                                    baik seperti pemangkasan dan penghapusan sisa-sisa tanaman yang terinfeksi, serta 
+                                    penggunaan varietas jagung yang tahan terhadap penyakit ini.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="questions__group">
+                        <div class="questions__item">
+                            <header class="questions__header">
+                                <i class="ri-add-line questions__icon"></i>
+                                <h3 class="questions__item-title">
+                                    Apa perbedaan antara early blight dan late blight pada tanaman kentang?
+                                </h3>
+                            </header>
+
+                            <div class="questions__content">
+                                <p class="questions__description">
+                                    Early blight dan late blight adalah dua penyakit yang umum terjadi pada tanaman 
+                                    kentang. Early blight disebabkan oleh jamur Alternaria solani, sedangkan late 
+                                    blight disebabkan oleh jamur Phytophthora infestans. Late blight lebih serius 
+                                    dan dapat menyebabkan kerugian yang lebih besar daripada early blight.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="questions__item">
+                            <header class="questions__header">
+                                <i class="ri-add-line questions__icon"></i>
+                                <h3 class="questions__item-title">
+                                    Bagaimana cara mencegah serangan early blight pada tanaman kentang?
+                                </h3>
+                            </header>
+
+                            <div class="questions__content">
+                                <p class="questions__description">
+                                    Beberapa tindakan pencegahan untuk menghindari serangan early blight pada kentang 
+                                    meliputi rotasi tanaman, penggunaan benih yang bebas penyakit, pengelolaan 
+                                    kelembaban tanah, dan penyemprotan fungisida sesuai petunjuk.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="questions__item">
+                            <header class="questions__header">
+                                <i class="ri-add-line questions__icon"></i>
+                                <h3 class="questions__item-title">
+                                    Apa gejala umum penyakit late blight pada tanaman kentang?
+                                </h3>
+                            </header>
+
+                            <div class="questions__content">
+                                <p class="questions__description">
+                                    Gejala penyakit late blight pada kentang meliputi adanya bintik-bintik cokelat 
+                                    gelap pada daun yang kemudian berkembang menjadi area layu dan busuk yang berbau 
+                                    busuk.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--==================== CONTACT ====================-->
+            <section  class="contact section container" id="contact">
+                <div class="contact__box">
+                    <h2 class="section__title-center">
+                        Anggota Kelompok <br> Starla 4 :
+                    </h2>
+                <div class="tutor-list">
+                    <div class="kartu-tutor">
+                        <img src={{ url_for('static', filename='/img/1.png') }} alt="" class="product__img">
+                        <p style="color: grey;">Irma Amanda Putri</p>
+                        <p style="color: grey; font-weight: 100;">UPN 'Veteran' Jawa Timur</p>
+                    </div>
+                    <div class="kartu-tutor">
+                        <img src={{ url_for('static', filename='/img/2.png') }} alt="" class="product__img">
+                        <p style="color: grey;">Gizka Refyana Putri</p>
+                        <p style="color: grey; font-weight: 100;">UPN 'Veteran' Jawa Timur</p>
+                    </div>
+                    <div class="kartu-tutor">
+                        <img src={{ url_for('static', filename='/img/.png') }} alt="" class="product__img">
+                        <p style="color: grey;">Afni Virda Alfadina</p>
+                        <p style="color: grey; font-weight: 100;">Universitas NU Surabaya</p>
+                    </div>
+                    <div class="kartu-tutor">
+                        <img src={{ url_for('static', filename='/img/13.png') }} alt="" class="product__img">
+                        <p style="color: grey;">Ichsan Fajrie W</p>
+                        <p style="color: grey; font-weight: 100;">Universitas Brawijaya</p>
+                    </div>
+                </div>
+                <p class="footer__copy">&#169; Starla4. All rigths reserved</p>
+        </section>
+        
+        <script src={{ url_for('static', filename='/js/client_side.js') }}></script>
+    </main>
+
+        <!--==================== FOOTER ====================-->
+        
+        <!--=============== SCROLL UP ===============-->
+        <a href="#" class="scrollup" id="scroll-up"> 
+            <i class="ri-arrow-up-fill scrollup__icon"></i>
+        </a>
+
+        <!--=============== SCROLL REVEAL ===============-->
+        <script src={{ url_for('static', filename='/js/scrollreveal.min.js') }}></script>
+        
+        <!--=============== MAIN JS ===============-->
+        <script src={{ url_for('static', filename='/js/main.js') }}></script>
+    </body>
+</html>
